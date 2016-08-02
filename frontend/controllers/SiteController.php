@@ -213,4 +213,21 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionInterview()  //Добавил код для опроса
+    {
+        $model = new \frontend\models\Interview();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+
+        return $this->render('interview', [
+            'model' => $model,
+        ]);
+    }
+
 }
