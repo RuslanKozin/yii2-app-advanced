@@ -117,13 +117,16 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {  /*Метод sendEmail отправляет сообщение
+                    на электронный адрес администратора.
+                Далее компонентом yii\web\Session формируется статус-ответ об отправки почты*/
                 Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
             } else {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');
             }
 
-            return $this->refresh();
+            return $this->refresh();  /* отправляется ответ пользователю, который содержит заголовки для
+                                        обновления текущей страницы*/
         } else {
             return $this->render('contact', [
                 'model' => $model,
