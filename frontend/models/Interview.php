@@ -12,6 +12,7 @@ use Yii;
  */
 class Interview extends \yii\db\ActiveRecord
 {
+    public $verifyCode;
     /**
      * @inheritdoc
      */
