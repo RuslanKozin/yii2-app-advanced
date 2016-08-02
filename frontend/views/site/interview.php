@@ -11,9 +11,12 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'version') ?>
-        <?= $form->field($model, 'apply_time') ?>
-
+        <?= $form->field($model, 'name') ?>
+        <?= $form->field($model, 'sex') ?>
+        <?= $form->field($model, 'planets') ?>
+        <?= $form->field($model, 'astronauts') ?>
+        <?= $form->field($model, 'planet') ?>
+    
         <div class="form-group">
             <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
         </div>
