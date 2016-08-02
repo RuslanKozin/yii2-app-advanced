@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'version') ?>
         <?= $form->field($model, 'apply_time') ?>
-    
+
         <div class="form-group">
             <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
         </div>

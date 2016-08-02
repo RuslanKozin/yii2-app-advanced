@@ -5,20 +5,26 @@ namespace frontend\models;
 use Yii;
 
 /**
- * This is the model class for table "migration".
+ * This is the model class for table "interview".
  *
- * @property string $version
- * @property integer $apply_time
+ * @property integer $id
+ * @property string $name
+ * @property integer $sex
+ * @property string $planets
+ * @property string $astronauts
+ * @property integer $planet
  */
 class Interview extends \yii\db\ActiveRecord
 {
-    public $verifyCode;
+
+    public $verifyCode; // Добавил элемент "проверочный код"
+
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'migration';
+        return 'interview';
     }
 
     /**
@@ -27,9 +33,9 @@ class Interview extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['version'], 'required'],
-            [['apply_time'], 'integer'],
-            [['version'], 'string', 'max' => 180],
+            [['name', 'sex', 'planets', 'astronauts', 'planet'], 'required'],
+            [['sex', 'planet'], 'integer'],
+            [['name', 'planets', 'astronauts'], 'string', 'max' => 255],
         ];
     }
 
@@ -39,6 +45,7 @@ class Interview extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => 'ID',
             'name' => 'Имя',
             'sex' => 'Пол',
             'planets' => 'Какие планеты обитаемы?',
