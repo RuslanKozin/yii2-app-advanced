@@ -33,9 +33,24 @@ class Interview extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'sex', 'planets', 'astronauts', 'planet'], 'required'],
-            [['sex', 'planet'], 'integer'],
-            [['name', 'planets', 'astronauts'], 'string', 'max' => 255],
+            [['name', 'sex', 'planets', 'astronauts', 'planet', 'verifyCode'], 'required'],
+            ['name', 'string'],
+            ['sex', 'boolean', 'message' => 'Пол выбран не верно.'],
+            [
+                ['planets', 'planet'],
+                'in',
+                'range' => range(0, 7),
+                'message' => 'Выбран не корректный список планет.',
+                'allowArray' => 1
+            ],
+            [
+                'astronauts',
+                'in',
+                'range' => range(0, 5),
+                'message' => 'Выбран не корректный список космонавтов.',
+                'allowArray' => 1
+            ],
+            ['verifyCode', 'captcha'],
         ];
     }
 
