@@ -39,8 +39,12 @@ class Interview extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'version' => 'Version',
-            'apply_time' => 'Apply Time',
+            'name' => 'Имя',
+            'sex' => 'Пол',
+            'planets' => 'Какие планеты обитаемы?',
+            'astronauts' => 'Какие космонавты известны?',
+            'planet' => 'На какую планету хотели бы полететь?',
+            'verifyCode' => 'Проверочный код',
         ];
     }
 }
