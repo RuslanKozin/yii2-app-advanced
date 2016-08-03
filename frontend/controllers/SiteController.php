@@ -220,8 +220,10 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
+                Yii::$app->session->setFlash(
+                    'success',
+                    'Спасибо, что уделили время. В ближайшее время будут опубликованы результаты.'
+                );
             }
         }
 
