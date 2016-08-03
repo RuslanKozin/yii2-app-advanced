@@ -224,6 +224,7 @@ class SiteController extends Controller
                     'success',
                     'Спасибо, что уделили время. В ближайшее время будут опубликованы результаты.'
                 );
+                return $this->redirect(Url::home());
             }
         }
 
