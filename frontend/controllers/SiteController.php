@@ -224,15 +224,13 @@ class SiteController extends Controller
     public function actionInterview()  //Добавил код для опроса
     {
         $model = new Interview();
-
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                Yii::$app->session->setFlash(
-                    'success',
-                    'Спасибо, что уделили время. В ближайшее время будут опубликованы результаты.'
-                );
-                return $this->redirect(Url::home());  //Перенаправляем пользователя после опроса
-            }
+            //Метод save включает в себя валидацию данных, поэтому можем заменить $model->validate() на $model->save()
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash(
+                'success',
+                'Спасибо, что уделили время. В ближайшее время будут опубликованы результаты.'
+            );
+            return $this->redirect(Url::home());  //Перенаправляем пользователя после опрос
         }
 
         $this->detachBehaviors('accessOnce');
