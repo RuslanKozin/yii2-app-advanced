@@ -7,11 +7,14 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Interview;
+use frontend\behaviors\AccessOnce;
 
 /**
  * Site controller
@@ -24,6 +27,10 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
+            'accessOnce' => [
+                'class' => '\frontend\behaviors\AccessOnce',
+                'actions' => ['interview']
+            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['logout', 'signup'],
@@ -216,7 +223,7 @@ class SiteController extends Controller
 
     public function actionInterview()  //Добавил код для опроса
     {
-        $model = new \frontend\models\Interview();
+        $model = new Interview();
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
@@ -224,10 +231,11 @@ class SiteController extends Controller
                     'success',
                     'Спасибо, что уделили время. В ближайшее время будут опубликованы результаты.'
                 );
-                return $this->redirect(Url::home());
+                return $this->redirect(Url::home());  //Перенаправляем пользователя после опроса
             }
         }
 
+        $this->detachBehaviors('accessOnce');
         return $this->render('interview', [
             'model' => $model,
         ]);
