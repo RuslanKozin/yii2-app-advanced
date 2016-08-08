@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label'=>'Количество спутников',
+                'attribute'=>'countSatellites',
                 'value' => function($planet) {
                     return $planet->getSatellites()->count();
                 }
