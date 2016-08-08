@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\SearchStar */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Stars';
+$this->title = 'Звезды';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="star-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Star', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить звезду', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
