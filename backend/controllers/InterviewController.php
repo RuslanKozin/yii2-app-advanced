@@ -122,3 +122,11 @@ class InterviewController extends Controller
         }
     }
 }
+
+        /*$dataProvider передаётся в вид, где срабатывают внутренние механизмы ActiveDataProvider для отображения
+            данных, в соответствии с разбивкой на страницы и сортировкой - выполняется запрос типа:
+        SELECT * FROM `interview` ORDER BY имя_атрибута LIMIT количество_записей_на_страницу OFFSET
+        (номер_страницы - 1) * количество_записей_на_страницу */
+    new ActiveDataProvider([
+        'query' => Interview::find(), //Interview::find() - подготавливает запрос типа SELECT * FROM interview
+    ]);
