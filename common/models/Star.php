@@ -49,6 +49,6 @@ class Star extends \yii\db\ActiveRecord
      */
     public function getPlanets()
     {
-        return $this->hasMany(Planet::className(), ['star_id' => 'id']);
+        return $this->hasMany(Planet::className(), ['star_id' => 'id']); //hasMany - отношение один ко многим (звезда имеет много планет)
     }
 }
