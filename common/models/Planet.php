@@ -54,7 +54,7 @@ class Planet extends \yii\db\ActiveRecord
      */
     public function getStar()
     {
-        return $this->hasOne(Star::className(), ['id' => 'star_id']);
+        return $this->hasOne(Star::className(), ['id' => 'star_id']); //hasOne - отношение один к одному(звезда имеет много планет)
     }
 
     /**
@@ -63,5 +63,6 @@ class Planet extends \yii\db\ActiveRecord
     public function getSatellites()
     {
         return $this->hasMany(Satellite::className(), ['planet_id' => 'id']);
+                    //hasMany - отношение один ко многим (звезда имеет много планет)
     }
 }

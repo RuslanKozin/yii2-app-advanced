@@ -53,6 +53,6 @@ class Satellite extends \yii\db\ActiveRecord
      */
     public function getPlanet()
     {
-        return $this->hasOne(Planet::className(), ['id' => 'planet_id']);
+        return $this->hasOne(Planet::className(), ['id' => 'planet_id']); //hasOne - отношение один к одному(звезда имеет много планет)
     }
 }
